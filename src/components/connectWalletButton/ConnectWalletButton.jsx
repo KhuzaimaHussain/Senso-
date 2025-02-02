@@ -6,6 +6,7 @@ import { FiChevronDown } from "react-icons/fi";
 import { FaPlus } from "react-icons/fa6";
 import IconImg1 from "../../assets/images/icons/wallet.svg";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { useWallet } from "@solana/wallet-adapter-react";
 const ConnectWalletButton = ({ variant }) => {
   const { openConnectModal } = useConnectModal();
   const { openAccountModal } = useAccountModal();
@@ -14,6 +15,8 @@ const ConnectWalletButton = ({ variant }) => {
   const [shortWalletAddress, setShortWalletAddress] = useState("");
 
   const { address: addressData, isConnected } = useAccount();
+  const { publicKey } = useWallet();
+  // console.log("public",publicKey.toBase58());
 
   useEffect(() => {
     if (isConnected) {
@@ -30,10 +33,15 @@ const ConnectWalletButton = ({ variant }) => {
   return (
     <ConnectWalletButtonStyleWrapper variant={variant}>
       {openConnectModal && variant != "v7" && (
-        <button className="connect-wallet-btn" >
-          {/* Connect <span>Wallet</span> */}
-          <WalletMultiButton/>
-        </button>
+        <div>
+          <WalletMultiButton>
+            {publicKey
+              ? `${String(publicKey).slice(0, 4)}...${String(publicKey).slice(
+                  -4
+                )}`
+              : "Connect wallet"}
+          </WalletMultiButton>
+        </div>
       )}
 
       {openConnectModal && variant === "v7" && (

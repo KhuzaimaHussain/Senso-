@@ -6,7 +6,7 @@ import DropdownDemo from "../dropdownDemo/DropdownDemo";
 import MobileMenu from "../mobileMenu/MobileMenu";
 import HeaderSocialLinks from "../../../assets/data/headerSocialLinks";
 import Whitepaper from "../../../assets/pdf/whitepaper.pdf";
-import Logo from "../../../assets/images/logo-3.png";
+import Logo from "../../../assets/images/logo-3.jpg";
 import Logo4 from "../../../assets/images/logo-4.png";
 import Logo5 from "../../../assets/images/logo-5.png";
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -35,14 +35,14 @@ const Header = ({ variant }) => {
           <div className="gittu-header-content">
             <div className="gittu-header-left">
               <NavLink className="gittu-header-logo" to="/" end>
-                <img src={logoImg} alt="Logo" />
+                <img style={{width:'75px', height:'75px' ,borderRadius:'15px'}} src={logoImg} alt="Logo" />
               </NavLink>
             </div>
             <div className="gittu-header-right">
               <div className="gittu-header-menu-toggle">
-                <button className="menu-toggler" onClick={handleMobileMenu}>
+                {/* <button className="menu-toggler" onClick={handleMobileMenu}>
                   <HiMenuAlt3 />
-                </button>
+                </button> */}
               </div>
               <div className="gittu-header-right-menu">
                 {variant === "v1" && (
@@ -86,7 +86,7 @@ const Header = ({ variant }) => {
                 {variant === "v6" && <ConnectWalletButton variant="v6" />}
                 {variant === "v7" && <ConnectWalletButton />}
 
-                <DropdownDemo className="dropdown-demo" />
+                {/* <DropdownDemo className="dropdown-demo" /> */}
               </div>
             </div>
           </div>

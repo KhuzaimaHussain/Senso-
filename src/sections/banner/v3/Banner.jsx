@@ -22,11 +22,11 @@ const Banner = () => {
           <div className="col-md-12">
             <div className="mb-40 text-center">
               <h5 className="ff-outfit fw-600 text-white text-uppercase">
-                {BannerData.presaleStatus}
+                {/* {BannerData.presaleStatus} */}
               </h5>
 
               <div className="mb-20 d-flex justify-content-center">
-                <Countdown endDate={stageEnd} font="title" />
+                {/* <Countdown endDate={stageEnd} font="title" /> */}
               </div>
               <h1 className="banner-title">
                 {BannerData.title} <span>{BannerData.title2}</span>{" "}
@@ -40,15 +40,16 @@ const Banner = () => {
           <div className="col-lg-8">
             <div className="mb-20 d-flex align-items-center justify-content-between gap-1 flex-wrap">
               <h5 className="ff-outfit fs-15 fw-600 text-white text-uppercase">
-                Stage  {currentStage} : {currentBonus}% Bonus !
+                {/* Stage  {currentStage} : {currentBonus}% Bonus ! ////////////// */}
+                We accept: Solana
+              </h5>
+              <h5 className="ff-outfit fs-15 fw-600 text-white text-uppercase" >
+              Minimum Buy: 0,1 Solana
               </h5>
               <h5 className="ff-outfit fs-15 fw-600 text-white text-uppercase">
-                {tokenSold} / {presaleToken}
+                {/* {tokenSold} / {presaleToken}    //////////// */}1 SENSO =
+                0.01 USD
               </h5>
-            </div>
-
-            <div className="mb-50">
-              <Progressbar done={tokenPercent} variant="dashed3" />
             </div>
 
             <PayWith variant="v1" />

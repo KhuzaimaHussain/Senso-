@@ -5,7 +5,7 @@ import ConnectWalletButton from "../../connectWalletButton/ConnectWalletButton";
 import DropdownDemo from "../dropdownDemo/DropdownDemo";
 import MobileMenu from "../mobileMenu/MobileMenu";
 
-import Logo from "../../../assets/images/logo-3.png";
+import Logo from "../../../assets/images/logo-4.png";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Whitepaper from "../../../assets/pdf/whitepaper.pdf";
 

@@ -16,16 +16,7 @@ function App() {
     <HashRouter>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<HomeV1 />} />
-        <Route path="/home-two" element={<HomeV2 />} />
-        <Route path="/home-three" element={<HomeV3 />} />
-        <Route path="/home-four" element={<HomeV4 />} />
-        <Route path="/home-five" element={<HomeV5 />} />
-        <Route path="/home-six" element={<HomeV6 />} />
-        <Route path="/home-seven" element={<HomeV7 />} />
-        <Route path="/home-eight" element={<HomeV8 />} />
-        <Route path="/home-nine" element={<HomeV9 />} />
-        <Route path="/home-ten" element={<HomeV10 />} />
+        <Route path="/" element={<HomeV3 />} />
       </Routes>
     </HashRouter>
   );

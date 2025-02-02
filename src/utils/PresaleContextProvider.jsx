@@ -18,12 +18,12 @@ const PresaleContextProvider = ({ children }) => {
   const [IsActiveBuyOnBnb, setIsActiveBuyOnBnb] = useState(true);
 
   const [buyOnItem, setBuyOnItem] = useState(2);
-  const [buyOnText, setBuyOnText] = useState("BUY ON BNB");
+  const [buyOnText, setBuyOnText] = useState("BUY ON SOL");
   const [buyOnIcon, setBuyOnIcon] = useState(BnbIcon);
   const [selectedImg, setSelectedImg] = useState(SolIcon);
 
   const [userChainId, setUserChainId] = useState(1);
-  const [userBalance, setUserBalance] = useState("0 ETH");
+  const [userBalance, setUserBalance] = useState("0 SOL");
 
   const [maxStage, setMaxStage] = useState(0);
   const [currentStage, setCurrentStage] = useState(1);
@@ -32,8 +32,8 @@ const PresaleContextProvider = ({ children }) => {
   const [stageEnd, setStageEnd] = useState(1733996440);
   const [nextStage, setNextStage] = useState(0);
   const [nextPrice, setNextPrice] = useState("0.002");
-  const [tokenName, setTokenName] = useState("GITTU TOKEN");
-  const [tokenSymbol, setTokenSymbol] = useState("GITTU");
+  const [tokenName, setTokenName] = useState("SENSO TOKEN");
+  const [tokenSymbol, setTokenSymbol] = useState("SENSO");
   const [presaleToken, setPresaleToken] = useState(100000);
   const [tokenSold, setTokenSold] = useState(20000);
   const [tokenPercent, setTokenPercent] = useState(20);
@@ -46,7 +46,7 @@ const PresaleContextProvider = ({ children }) => {
   const [buyAmount, setBuyAmount] = useState(0);
   const [bonusAmount, setBonusAmount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  const network = WalletAdapterNetwork.Devnet;
+  const network = WalletAdapterNetwork.Mainnet;
   const [Loader, setLoader] = useState(false);
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
@@ -71,12 +71,19 @@ const PresaleContextProvider = ({ children }) => {
       return tokentoSell;
     } catch (error) {}
   };
-  const handlePaymentInput = async (e) => {
-    const _inputValue = e.target.value;
-    let valueToSend = await buyWithSol(_inputValue);
-    setTotalAmount(valueToSend);
-    setPaymentAmount(_inputValue);
 
+  const handlePaymentInput = async (e) => {
+    let _inputValue = e.target.value; 
+    setPaymentAmount(_inputValue); 
+
+    try {
+        let valueToSend = await buyWithSol(_inputValue);
+        setTotalAmount(valueToSend);
+    } catch (error) {
+        console.error("Error in buyWithSol:", error);
+    }
+
+    // Uncomment if you need these calculations
     // const _ethToUsd = _inputValue * usdExRate;
     // const _getToken = parseInt(_ethToUsd / currentPrice);
 
@@ -92,7 +99,8 @@ const PresaleContextProvider = ({ children }) => {
     // setTotalAmount(_totalAmount);
 
     // setPaymentPrice(_inputValue);
-  };
+};
+
   const buyToken = async () => {
     console.log("buy button is clicked");
     console.log("I am in Sol transfer function");
@@ -111,7 +119,7 @@ const PresaleContextProvider = ({ children }) => {
         return;
       }
 
-      const connection = new Connection(endpoint, "confirmed");
+      const connection = new Connection('https://solana-mainnet.g.alchemy.com/v2/rKshm4YiwRaokisumjlrGg2ekolHzkNT', "confirmed");
       const senderPublicKey = window.solana.publicKey;
       console.log(connection);
 

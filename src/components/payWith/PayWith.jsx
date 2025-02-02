@@ -25,8 +25,8 @@ const PayWith = ({ variant }) => {
     <PayWithStyleWrapper variant={variant}>
       {variant === "v1" && (
         <div className="mb-20 text-center">
-          <h4 className="ff-title fw-600 text-white text-uppercase">
-            1 {tokenSymbol} = {currentPrice} USD
+          <h4 className="ff-title fw-600 text-white text-uppercase ">
+            {/* 1 {tokenSymbol} = {currentPrice} US */}
           </h4>
         </div>
       )}
@@ -36,9 +36,9 @@ const PayWith = ({ variant }) => {
           {(variant === "v1" || variant === "v2" || variant === "v3") && (
             <ul className="pay-with-list">
               <li>
-                <button className="active">
-                  <img src={selectedImg} alt="icon" />
-                </button>
+                {/* <button className="active"> */}
+                {/* <img src={selectedImg} alt="icon" /> */}
+                {/* </button> */}
               </li>
             </ul>
           )}
@@ -72,7 +72,7 @@ const PayWith = ({ variant }) => {
         {variant === "v2" && (
           <div className="pay-with-content-middle">
             <h4 className="ff-title fw-600 text-white text-uppercase">
-              1 {tokenSymbol} = {currentPrice} USD
+              1 {tokenSymbol} = {currentPrice} US
             </h4>
           </div>
         )}
@@ -80,29 +80,10 @@ const PayWith = ({ variant }) => {
         {variant === "v3" && (
           <div className="pay-with-content-middle">
             <h4 className="ff-title2 fw-400 text-white text-uppercase">
-              1 {tokenSymbol} = {currentPrice} USD
+              1 {tokenSymbol} = {currentPrice} U
             </h4>
           </div>
         )}
-        {/* 
-        <div className="pay-with-content-right">
-          {(variant === "v1" || variant === "v2" || variant === "v3") && (
-            <button className="pay-with-button">
-              {buyOnText}
-              <img src={buyOnIcon} alt="icon" />
-            </button>
-          )}
-
-          {(variant === "v4" || variant === "v5" || variant === "v6") && (
-            <ul className="pay-with-list">
-              <li>
-                <button className="active">
-                  <img src={selectedImg} alt="icon" />
-                </button>
-              </li>
-            </ul>
-          )}
-        </div> */}
       </div>
 
       <form action="/" method="post">
@@ -111,7 +92,7 @@ const PayWith = ({ variant }) => {
             <label>Pay token (SOL)</label>
             <input
               type="number"
-              placeholder="0"
+              placeholder="enter solana"
               value={paymentAmount}
               onChange={handlePaymentInput}
             />
@@ -132,9 +113,9 @@ const PayWith = ({ variant }) => {
         )}
       </div>
       {/* {!Loader && ( */}
-        <button disabled={Loader} onClick={buyToken} className="presale-item-btn">
-          Buy now
-        </button>
+      <button disabled={Loader} onClick={buyToken} className="presale-item-btn">
+        Buy now
+      </button>
       {/* )} */}
       {/* <button onClick={buyToken} className="presale-item-btn">
         Buy now

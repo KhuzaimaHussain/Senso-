@@ -8,7 +8,7 @@ import Whitepaper from "../../../assets/pdf/whitepaper.pdf";
 import DropdownDemo from "../../../components/header/dropdownDemo/DropdownDemo";
 import { GoArrowDownLeft, GoArrowUpRight } from "react-icons/go";
 import SolidProofImg from "../../../assets/images/solidproof.png";
-import LogoImg from "../../../assets/images/logo-3.png";
+import LogoImg from "../../../assets/images/logo-4.png";
 import IconImg2 from "../../../assets/images/icons/telegram.svg";
 import IconImg3 from "../../../assets/images/icons/twitter.svg";
 import IconImg4 from "../../../assets/images/icons/discord.svg";
