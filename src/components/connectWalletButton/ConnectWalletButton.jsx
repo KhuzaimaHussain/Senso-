@@ -16,8 +16,6 @@ const ConnectWalletButton = ({ variant }) => {
 
   const { address: addressData, isConnected } = useAccount();
   const { publicKey } = useWallet();
-  // console.log("public",publicKey.toBase58());
-
   useEffect(() => {
     if (isConnected) {
       let first = addressData.slice(0, 4);

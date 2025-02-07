@@ -29,8 +29,8 @@ const Banner = () => {
                 {/* <Countdown endDate={stageEnd} font="title" /> */}
               </div>
               <h1 className="banner-title">
-                {BannerData.title} <span>{BannerData.title2}</span>{" "}
-                {BannerData.title3}
+                Get your SENSO Now
+                {/* {BannerData.title3} */}
               </h1>
               <h5 className="ff-outfit text-white">{BannerData.subtitle}</h5>
             </div>
@@ -43,8 +43,8 @@ const Banner = () => {
                 {/* Stage  {currentStage} : {currentBonus}% Bonus ! ////////////// */}
                 We accept: Solana
               </h5>
-              <h5 className="ff-outfit fs-15 fw-600 text-white text-uppercase" >
-              Minimum Buy: 0,1 Solana
+              <h5 className="ff-outfit fs-15 fw-600 text-white text-uppercase">
+                Minimum Buy: 0.1 Solana
               </h5>
               <h5 className="ff-outfit fs-15 fw-600 text-white text-uppercase">
                 {/* {tokenSold} / {presaleToken}    //////////// */}1 SENSO =

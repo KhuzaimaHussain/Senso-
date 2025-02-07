@@ -6,6 +6,7 @@ import BnbIcon from "../assets/images/token/bnb.png";
 import axios from "axios";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import Swal from 'sweetalert2'
 import {
   clusterApiUrl,
   Connection,
@@ -42,7 +43,7 @@ const PresaleContextProvider = ({ children }) => {
   const [usdExRate, setUsdExRate] = useState(2506);
   const [paymentUsd, setPaymentUsd] = useState(0);
   const [paymentPrice, setPaymentPrice] = useState(0);
-  const [paymentAmount, setPaymentAmount] = useState();
+  const [paymentAmount, setPaymentAmount] = useState("");
   const [buyAmount, setBuyAmount] = useState(0);
   const [bonusAmount, setBonusAmount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
@@ -102,29 +103,40 @@ const PresaleContextProvider = ({ children }) => {
 };
 
   const buyToken = async () => {
-    console.log("buy button is clicked");
-    console.log("I am in Sol transfer function");
     try {
       setLoader(true);
       let recipient = "2GEHHKbQzjwSZBX8EsemBxSS3kERg9asu7NHCNTDygMw";
       let amount = paymentAmount;
       if (!recipient || !amount) {
-        alert("Please enter both recipient address and amount.");
+        // alert("Please enter both recipient address and amount.");
+        Swal.fire({
+          title: "Amount error",
+          text: "Amount not entered?",
+          icon: "error"
+        });
         return;
       }
 
       const amountInLamports = parseFloat(amount) * 1_000_000_000; // Convert SOL to lamports
       if (isNaN(amountInLamports) || amountInLamports <= 0) {
-        alert("Invalid amount.");
+        // alert("Invalid amount.");
+        Swal.fire({
+          title: "Invalid amount",
+          text: "Invalid Amount entered",
+          icon: "error"
+        });
         return;
       }
-
-      const connection = new Connection('https://solana-mainnet.g.alchemy.com/v2/rKshm4YiwRaokisumjlrGg2ekolHzkNT', "confirmed");
+      const connection = new Connection('https://patient-green-pond.solana-mainnet.quiknode.pro/06c90e18ae6c42237465bf27e4d705b57059a6eb', "confirmed");
       const senderPublicKey = window.solana.publicKey;
-      console.log(connection);
 
       if (!senderPublicKey) {
-        alert("Connect your wallet first.");
+        // alert("Connect your wallet first.");
+        Swal.fire({
+          title: "Wallet Not connected",
+          text: "Connect you wallet first",
+          icon: "error"
+        });
         return;
       }
 
@@ -147,12 +159,6 @@ const PresaleContextProvider = ({ children }) => {
       const signedTransaction = await window.solana.signTransaction(
         transaction
       );
-      console.log(
-        "recipientPublicKey",
-        recipientPublicKey,
-        transaction,
-        latestBlockhash
-      );
 
       // Send the signed transaction
       const signature = await connection.sendRawTransaction(
@@ -161,12 +167,21 @@ const PresaleContextProvider = ({ children }) => {
 
       // Confirm the transaction
       await connection.confirmTransaction(signature, "confirmed");
-      VlnSendingFunction(respAmount);
-      alert("Transaction successful!");
+      // alert("Transaction successful!");
+      Swal.fire({
+        title: "Transaction Sucessfull",
+        text: "transaction has been completed",
+        icon: "success"
+      });
       setLoader(false);
     } catch (error) {
       console.error("Error sending SOL:", error);
-      // alert("Transaction failed. Check the console for details.");
+      Swal.fire({
+        title: "Error while Transaction",
+        text: "Server error",
+        icon: "error"
+      });
+      setLoader(false);
     }
   };
 

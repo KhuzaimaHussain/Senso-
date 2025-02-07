@@ -95,7 +95,7 @@ const config = getDefaultConfig({
 const queryClient = new QueryClient();
 
 const Rainbowkit = ({ children }) => {
-  const network = WalletAdapterNetwork.Devnet;
+  const network = WalletAdapterNetwork.Mainnet;
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
   const wallets = useMemo(() => [new PhantomWalletAdapter()], [network]);
 
